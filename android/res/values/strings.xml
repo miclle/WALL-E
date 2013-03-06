@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">WALL·E</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="dummy_button">Dummy Button</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
 
 </resources>

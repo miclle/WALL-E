@@ -1,8 +1,8 @@
-Well·E
+WALL·E
 ======
 ---
 
-Well·E Robot
+WALL·E Robot
 
 ![Mou icon](https://raw.github.com/miclle/WALL-E/master/wall-e-pixar.jpg)
 
