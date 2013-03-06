@@ -4,7 +4,7 @@ Well·E
 
 Well·E Robot
 
-![Mou icon](https://raw.github.com/miclle/Well-E/master/wall-e-pixar.jpg)
+![Mou icon](https://raw.github.com/miclle/WALL-E/master/wall-e-pixar.jpg)
 
 
 ##libs
