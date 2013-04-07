@@ -1,0 +1,8 @@
+---
+:orm: activerecord
+:test: none
+:mock: none
+:script: jquery
+:renderer: erb
+:stylesheet: none
+:namespace: WallE
