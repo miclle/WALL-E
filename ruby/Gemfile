@@ -6,3 +6,4 @@ gem 'sinatra-reloader'
 
 gem 'rb-fsevent', '~> 0.9'
 gem 'rerun'
+gem 'shotgun'

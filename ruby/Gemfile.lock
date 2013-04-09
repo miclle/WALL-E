@@ -12,6 +12,8 @@ GEM
     rb-fsevent (0.9.3)
     rerun (0.8.0)
       listen
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.4.2)
       rack (~> 1.5, >= 1.5.2)
       rack-protection (~> 1.4)
@@ -33,5 +35,6 @@ PLATFORMS
 DEPENDENCIES
   rb-fsevent (~> 0.9)
   rerun
+  shotgun
   sinatra
   sinatra-reloader

@@ -1,10 +1,10 @@
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 
 require './system'
 
 get '/' do
-  'Hello World!'
+  'Hello World!----'
 end
 
 get '/system' do
