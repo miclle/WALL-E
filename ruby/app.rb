@@ -9,5 +9,6 @@ end
 
 get '/system' do
   # Cpu.info
-  System.cpu
+  #System.cpu
+  System.momory
 end
