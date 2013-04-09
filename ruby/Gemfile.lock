@@ -9,6 +9,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rb-fsevent (0.9.3)
     rerun (0.8.0)
       listen
     sinatra (1.4.2)
@@ -30,6 +31,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rb-fsevent (~> 0.9)
   rerun
   sinatra
   sinatra-reloader
