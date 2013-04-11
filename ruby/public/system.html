@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Highcharts Example</title>
+
+    <script type="text/javascript" src="javascripts/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="javascripts/highcharts/modules/exporting.js"></script>
+
+    <script type="text/javascript">
+      $(function (){
+
+        // Radialize the colors
+        Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+          return { radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 }, stops: [ [0, color], [1, Highcharts.Color(color).brighten(-0.3).get('rgb')]] };
+        });
+
+        // Build the chart
+        var chart = new Highcharts.Chart({
+          chart:    { renderTo: 'container'},
+          title:    { text: 'System memory' },
+          tooltip:  {
+            pointFormat: '<b>{point.y}KB</b>',
+            percentageDecimals: 1
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                enabled: true,
+                color: '#000000',
+                connectorColor: '#000000',
+                formatter: function() {
+                  return '<b>'+ this.key +'</b>: '+ this.y +' KB';
+                }
+              }
+            }
+          },
+          series: [{ type: 'pie' }]
+        });
+
+// active: 147944
+// anon_pages: 102844
+// bounce: 0
+// buffers: 26524
+// cached: 169512
+// commit_limit: 326784
+// committed_as: 359564
+// dirty: 0
+// free: 126984
+// inactive: 149268
+// mapped: 41868
+// nfs_unstable: 0
+// page_tables: 2176
+// slab: 11508
+// slab_reclaimable: 5552
+// slab_unreclaim: 5956
+// swap: {cached:0, total:102396, free:102396}
+// total: 448776
+// vmalloc_chunk: 344688
+// vmalloc_total: 565248
+// vmalloc_used: 3700
+// writeback: 0
+
+        $.getJSON('/system', function(info){
+          var memory = info['memory'];
+          // 内存使用率(MEMUsedPerc)=100*(MemTotal-MemFree-Buffers-Cached)/MemTotal
+          chart.series[0].setData([
+            ['buffers', memory['buffers']],
+            ['cached',  memory['cached']],
+            ['free',    memory['free']],
+            ['used',    memory['total'] - memory['free'] - memory['buffers'] - memory['cached']]
+          ]);
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+
+    <div id="container" style="min-width: 300px; height: 300px; margin: 0 auto"></div>
+
+  </body>
+</html>

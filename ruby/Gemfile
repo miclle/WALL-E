@@ -1,9 +1,8 @@
 source 'http://ruby.taobao.org/'
 
 gem 'sinatra'
-
 gem 'sinatra-reloader'
 
-gem 'rb-fsevent', '~> 0.9'
-gem 'rerun'
-gem 'shotgun'
+# gem 'rb-fsevent', '~> 0.9'
+# gem 'rerun'
+# gem 'shotgun'
