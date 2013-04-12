@@ -5,8 +5,8 @@
     <title>Highcharts Example</title>
 
     <script type="text/javascript" src="javascripts/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery/jquery.extends.js"></script>
     <script type="text/javascript" src="javascripts/highcharts/highcharts.js"></script>
-    <script type="text/javascript" src="javascripts/highcharts/modules/exporting.js"></script>
 
     <script type="text/javascript">
       $(function (){
@@ -18,22 +18,22 @@
 
         // Build the chart
         var chart = new Highcharts.Chart({
-          chart:    { renderTo: 'container'},
-          title:    { text: 'System memory' },
+          credits:  { enabled: false  },
+          chart:    { renderTo: 'container' },
+          title:    { text: 'System Memory' },
           tooltip:  {
-            pointFormat: '<b>{point.y}KB</b>',
+            pointFormat: '<b>{point.y}MB</b>',
             percentageDecimals: 1
           },
           plotOptions: {
             pie: {
               allowPointSelect: true,
-              cursor: 'pointer',
               dataLabels: {
                 enabled: true,
                 color: '#000000',
                 connectorColor: '#000000',
                 formatter: function() {
-                  return '<b>'+ this.key +'</b>: '+ this.y +' KB';
+                  return '<b>'+ this.key +'</b>: '+ this.y +' MB';
                 }
               }
             }
@@ -67,11 +67,14 @@
         $.getJSON('/system', function(info){
           var memory = info['memory'];
           // 内存使用率(MEMUsedPerc)=100*(MemTotal-MemFree-Buffers-Cached)/MemTotal
+
+          var buffers = $.rounding(memory['buffers']/1024, 2)
+
           chart.series[0].setData([
-            ['buffers', memory['buffers']],
-            ['cached',  memory['cached']],
-            ['free',    memory['free']],
-            ['used',    memory['total'] - memory['free'] - memory['buffers'] - memory['cached']]
+            ['buffers', $.rounding(memory['buffers']/1024, 2)],
+            ['cached',  $.rounding(memory['cached']/1024, 2)],
+            ['free',    $.rounding(memory['free']/1024, 2)],
+            ['used',    $.rounding((memory['total'] - memory['free'] - memory['buffers'] - memory['cached'])/1024, 2)],
           ]);
         });
 
