@@ -2,9 +2,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Highcharts Example</title>
-
-    <script type="text/javascript" src="javascripts/jquery/jquery-1.9.1.min.js"></script>
+    <title>WALL·E Robot</title>
+  <script type="text/javascript" src="javascripts/jquery/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="javascripts/jquery/jquery.extends.js"></script>
     <script type="text/javascript" src="javascripts/highcharts/highcharts.js"></script>
 
@@ -21,17 +20,12 @@
           credits:  { enabled: false  },
           chart:    { renderTo: 'container' },
           title:    { text: 'System Memory' },
-          tooltip:  {
-            pointFormat: '<b>{point.y}MB</b>',
-            percentageDecimals: 1
-          },
+          tooltip:  { pointFormat: '<b>{point.y}MB</b>' },
           plotOptions: {
             pie: {
               allowPointSelect: true,
               dataLabels: {
-                enabled: true,
                 color: '#000000',
-                connectorColor: '#000000',
                 formatter: function() {
                   return '<b>'+ this.key +'</b>: '+ this.y +' MB';
                 }
@@ -41,40 +35,13 @@
           series: [{ type: 'pie' }]
         });
 
-// active: 147944
-// anon_pages: 102844
-// bounce: 0
-// buffers: 26524
-// cached: 169512
-// commit_limit: 326784
-// committed_as: 359564
-// dirty: 0
-// free: 126984
-// inactive: 149268
-// mapped: 41868
-// nfs_unstable: 0
-// page_tables: 2176
-// slab: 11508
-// slab_reclaimable: 5552
-// slab_unreclaim: 5956
-// swap: {cached:0, total:102396, free:102396}
-// total: 448776
-// vmalloc_chunk: 344688
-// vmalloc_total: 565248
-// vmalloc_used: 3700
-// writeback: 0
-
         $.getJSON('/system', function(info){
           var memory = info['memory'];
-          // 内存使用率(MEMUsedPerc)=100*(MemTotal-MemFree-Buffers-Cached)/MemTotal
-
-          var buffers = $.rounding(memory['buffers']/1024, 2)
-
           chart.series[0].setData([
             ['buffers', $.rounding(memory['buffers']/1024, 2)],
             ['cached',  $.rounding(memory['cached']/1024, 2)],
             ['free',    $.rounding(memory['free']/1024, 2)],
-            ['used',    $.rounding((memory['total'] - memory['free'] - memory['buffers'] - memory['cached'])/1024, 2)],
+            ['used',    $.rounding((memory['total'] - memory['free'] - memory['buffers'] - memory['cached'])/1024, 2)]
           ]);
         });
 
