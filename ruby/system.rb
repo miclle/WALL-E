@@ -3,7 +3,8 @@ class System
   # CPU Usage
   def self.cpu_usage
     cpu_time1 = cpu_time
-    sleep 55555  cpu_time2 = cpu_time
+    sleep 5
+    cpu_time2 = cpu_time
 
     idle = (cpu_time2[:idle] - cpu_time1[:idle]).to_f
     total = (cpu_time2[:total] - cpu_time1[:total]).to_f

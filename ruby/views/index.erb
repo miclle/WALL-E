@@ -35,15 +35,18 @@
           series: [{ type: 'pie' }]
         });
 
-        $.getJSON('/system', function(info){
-          var memory = info['memory'];
-          chart.series[0].setData([
-            ['buffers', $.rounding(memory['buffers']/1024, 2)],
-            ['cached',  $.rounding(memory['cached']/1024, 2)],
-            ['free',    $.rounding(memory['free']/1024, 2)],
-            ['used',    $.rounding((memory['total'] - memory['free'] - memory['buffers'] - memory['cached'])/1024, 2)]
-          ]);
-        });
+        function getSystemInfo(){
+          $.getJSON('/system', function(info){
+            var memory = info['memory'];
+            chart.series[0].setData([
+              ['buffers', $.rounding(memory['buffers']/1024, 2)],
+              ['cached',  $.rounding(memory['cached']/1024, 2)],
+              ['free',    $.rounding(memory['free']/1024, 2)],
+              ['used',    $.rounding((memory['total'] - memory['free'] - memory['buffers'] - memory['cached'])/1024, 2)]
+            ]);
+          });
+          setTimeout('getSystemInfo()', 1000 * 5);
+        }
 
       });
     </script>
