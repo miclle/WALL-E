@@ -35,6 +35,11 @@
           series: [{ type: 'pie' }]
         });
 
+        // console.log("setInterval");
+        // setInterval(function(){
+        //   console.log("test...");
+        // }, 1000*5);
+
         var getSystemInfo = function(){
           console.log("getSystemInfo");
           $.getJSON('/system', function(info){
@@ -45,7 +50,7 @@
               ['free',    $.rounding(memory['free']/1024, 2)],
               ['used',    $.rounding((memory['total'] - memory['free'] - memory['buffers'] - memory['cached'])/1024, 2)]
             ]);
-            setTimeout('getSystemInfo()', 1000 * 5);
+            setTimeout(getSystemInfo, 1000 * 5);
           });
         }
 
