@@ -19,7 +19,7 @@ class System
   end
 
   # CPU Temperature
-  def cpu_temperature
+  def self.cpu_temperature
     `vcgencmd measure_temp`.gsub("temp=", "").gsub("'C\n", "").to_f
   end
 
