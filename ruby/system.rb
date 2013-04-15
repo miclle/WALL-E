@@ -2,6 +2,15 @@ class System
 
   # CPU Usage
   def self.cpu_usage
+
+    # http://www.blogjava.net/fjzag/articles/317773.html
+
+    # https://github.com/flori/cpu
+
+    # IO.popen("top -b -n 2 | grep ^Cpu").read.split("\n").last
+
+    # result = `top -n 2 | awk '/Cpu\(s\):/'`
+
     cpu_time1 = cpu_time
     sleep 5
     cpu_time2 = cpu_time
@@ -9,7 +18,7 @@ class System
     idle = (cpu_time2[:idle] - cpu_time1[:idle]).to_f
     total = (cpu_time2[:total] - cpu_time1[:total]).to_f
 
-    total == 0 ? 0 : idle.quo(total)
+    total == 0 ? 0 : (100 - idle.quo(total) * 100)
   end
 
   # CPU Time
