@@ -36,8 +36,16 @@
         });
 
         var getSystemInfo = function(){
-          console.log("getSystemInfo");
+
           $.getJSON('/system', function(info){
+            var stat = info['stat'];
+
+            var user = stat['user'], nice = stat['nice'], system = stat['system'], idle = stat['idle'], iowait = stat['iowait'], irq = stat['irq'], softirq = stat['softirq'];
+
+            var cpuUsages = $.cpuStat(user, nice, system, idle, iowait, irq, softirq);
+
+            console.log(cpuUsages);
+
             var memory = info['memory'];
             chart.series[0].setData([
               ['buffers', $.rounding(memory['buffers']/1024, 2)],

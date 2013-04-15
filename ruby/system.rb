@@ -21,10 +21,11 @@ class System
     total == 0 ? 0 : (100 - idle.quo(total) * 100)
   end
 
-  # CPU Time
-  def self.cpu_time
-    cpu_times = IO.readlines("/proc/stat").first.split[1..7].map { |e| e = e.to_i }
-    {total: cpu_times.inject(:+), idle: cpu_times[3]}
+  # CPU Stat
+  def self.stat
+    cpu_times = IO.readlines("tmp/stat").first.split[1..7].map { |e| e = e.to_i }
+    names = [:user, :nice, :system, :idle, :iowait, :irq, :softirq]
+    Hash[names.zip cpu_times]
   end
 
   # CPU Temperature
@@ -37,7 +38,7 @@ class System
     memory = Hash.new
     memory[:swap] = Hash.new
 
-    File.open("/proc/meminfo").each do |line|
+    File.open("tmp/meminfo").each do |line|
       case line
       when /^MemTotal:\s+(\d+)/
         memory[:total] = $1.to_i
