@@ -1,6 +1,5 @@
 WALL·E
 ======
----
 
 WALL·E Robot
 
