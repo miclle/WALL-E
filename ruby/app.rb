@@ -6,7 +6,7 @@ require './system'
 
 configure do
   set :bind, '0.0.0.0'
-  set :port, 3000
+  set :port, 3456
 end
 
 get '/' do
