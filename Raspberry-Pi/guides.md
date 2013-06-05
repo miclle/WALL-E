@@ -44,3 +44,6 @@ PS.最新版本镜像raspi-config菜单与之前版本有点不同，合并了�
 
 在完成以上主要设置后，返回主菜单，选择`<Finish>` 系统会提示一些变更需要重启才能生效。重启以后，你会看到一个登录界面
 默认帐户为：`Username: pi ` `Password: raspberry`
+
+###startx 图形界面
+命令行中输入”startx”来进入图形界面
