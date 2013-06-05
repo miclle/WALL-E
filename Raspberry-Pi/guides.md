@@ -32,3 +32,11 @@
 ![root-partition-has-been-resized](https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/images/guides-root-partition-has-been-resized.png)   
 
 第二项 `2 Change User Password         Change password for the default user (pi)`  这里可以修改默认登录密码`raspberry`
+
+第四项 `4 Internationalisation Options Set up language and regional settings to match your location` 这里可以更改区域、设置语言、时区及键盘
+![internationalisation-options](https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/images/guides-internationalisation-options.png)   
+
+其过程类似于安装Ubuntu
+
+在完成以上主要设置后，返回主菜单，选择`<Finish>` 系统会提示你，一些变更需要重启才能生效。重启以后，你会看到一个登录界面
+默认帐户为：`Username: pi ` `Password: raspberry`
