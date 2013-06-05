@@ -24,4 +24,11 @@
 写入的过程需要一点时间。当`dd`完成了它的工作以后，将SD卡安全移除。
 
 ###初次启动Raspberry Pi
+初次启动Raspberry Pi时，你会看到一个叫做raspi-config的配置工具。如果在日后使用过程中你需要更改这些设置，你可以通过在Pi的命令行中运行raspi-config来使用这个工具。在这里，你需要进行一些最基本的设置来继续使用你的Pi。
 ![setup-options](https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/images/guides-setup-options-1-select.png)   
+
+首先，我们要选择`Expand Filesystem`。它的作用是将刚才写入到SD卡中的映像文件大小扩展到整张SD卡中。如果你使用的是一张较大的SD卡（例如 16GB），那么你肯定像充分利用上面的空间。因为原本的映像只有大约2GB的大小，进行该操作就能将它扩展到与你的SD卡同样的大小。
+选中expand_rootfs选项，然后按下回车。你会看到如下提示，只需要再按一下回车就可以回到raspi-config的主菜单中。  
+![root-partition-has-been-resized](https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/images/guides-root-partition-has-been-resized.png)   
+
+第二项 `2 Change User Password         Change password for the default user (pi)`  这里可以修改默认登录密码`raspberry`
