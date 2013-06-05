@@ -21,6 +21,8 @@ Arduino Nano | http://item.taobao.com/item.htm?id=4151143935 | ￥68.00
 零件盒 | http://item.taobao.com/item.htm?id=13452504107 | ￥4.00 可选
 螺丝刀套装 | http://detail.tmall.com/item.htm?id=18126348939 | ¥ 33.50 - 120.50
 
+*以上材料还会断续更新，其中链接无任何广告意图，只是个人购买地址*
+
 ##工具篇
 折腾过程中用到如下工具：
 `剪刀` `平锉` `螺丝刀` `充电起子`
