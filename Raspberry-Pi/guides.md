@@ -30,20 +30,25 @@ PS.最新版本镜像raspi-config菜单与之前版本有点不同，合并了�
 ![setup-options](https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/images/guides-setup-options-1-select.png)   
 
 首先，我们要选择`Expand Filesystem`。它的作用是将刚才写入到SD卡中的映像文件大小扩展到整张SD卡中。如果你使用的是一张较大的SD卡（例如 16GB），那么你肯定像充分利用上面的空间。因为原本的映像只有大约2GB的大小，进行该操作就能将它扩展到与你的SD卡同样的大小。
-选中expand_rootfs选项，然后按下回车。你会看到如下提示，只需要再按一下回车就可以回到raspi-config的主菜单中。  
+选中`Expand Filesystem`选项，然后按下回车。你会看到如下提示，只需要再按一下回车就可以回到raspi-config的主菜单中。  
 ![root-partition-has-been-resized](https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/images/guides-root-partition-has-been-resized.png)   
 
-第二项 `2 Change User Password`  这里可以修改默认登录密码`raspberry`
+第二项 `Change User Password`  这里可以修改默认登录密码`raspberry`
 
-第四项 `4 Internationalisation Options Set up language and regional settings to match your location` 这里可以更改区域、设置语言、时区及键盘
+第四项 `Internationalisation Options Set up language and regional settings to match your location` 这里可以更改区域、设置语言、时区及键盘
 ![internationalisation-options](https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/images/guides-internationalisation-options.png)   
+Raspberry Pi没有实时时钟，靠网络同步时间
 
 其过程类似于安装Ubuntu
 
-第八项`8 Advanced Options`中，可以设置SSH Server，已默认开启。
+第八项`Advanced Options`中，可以设置SSH Server，已默认开启。
 
 在完成以上主要设置后，返回主菜单，选择`<Finish>` 系统会提示一些变更需要重启才能生效。重启以后，你会看到一个登录界面
 默认帐户为：`Username: pi ` `Password: raspberry`
 
 ###startx 图形界面
-命令行中输入”startx”来进入图形界面
+命令行中输入`startx`来进入图形界面
+
+###WIFI Config
+*  在startx进入图形界面后，桌面有一个WIFI Config图标，如果你已经将USB无线网卡插入Raspberry Pi，应该能在设置中找到一个wlan0的设备，编辑这个网络，psk设置为你的无线密码，其它与你无线参数一一对应上即可，保存设置，最后点击`Connection`连接
+*  另一种设置方法是通过命令行设置 过程详见 https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/setup-wifi-raspberry-pi.md
