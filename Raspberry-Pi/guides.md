@@ -51,4 +51,4 @@ Raspberry Pi没有实时时钟，靠网络同步时间
 
 ###WIFI Config
 *  在startx进入图形界面后，桌面有一个WIFI Config图标，如果你已经将USB无线网卡插入Raspberry Pi，应该能在设置中找到一个wlan0的设备，编辑这个网络，psk设置为你的无线密码，其它与你无线参数一一对应上即可，保存设置，最后点击`Connection`连接
-*  另一种设置方法是通过命令行设置 过程详见 https://raw.github.com/miclle/WALL-E/master/Raspberry-Pi/setup-wifi-raspberry-pi.md
+*  另一种设置方法是通过命令行设置 过程详见 https://github.com/miclle/WALL-E/blob/master/Raspberry-Pi/setup-wifi-raspberry-pi.md
