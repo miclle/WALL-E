@@ -21,7 +21,7 @@ source ~/.profile
 
 - 测试是否正确  
 
-- ```shell
+- ```
 pi@raspberrypi ~ $ ruby -v
 ruby 2.0.0p195 (2013-05-14 revision 40734) [armv6l-linux-eabihf]
 pi@raspberrypi ~ $ gem -v
@@ -35,6 +35,6 @@ pi@raspberrypi:~ $ gem install bundler --no-rdoc --no-ri -V
 
 
 - http://www.sinatrarb.com/  
-- ```
+```
 pi@raspberrypi:~ $ gem install sinatra --no-rdoc --no-ri -V  
 ```  
