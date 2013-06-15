@@ -6,3 +6,6 @@ gem 'sinatra-reloader'
 # gem 'rb-fsevent', '~> 0.9'
 # gem 'rerun'
 # gem 'shotgun'
+
+# gem "ruby-serialport", "~> 0.7.0"
+# gem "arduino_firmata", "~> 0.2.8"
