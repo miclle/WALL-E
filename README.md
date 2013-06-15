@@ -8,6 +8,9 @@ WALL·E Robot
 ##材料及工具
 https://github.com/miclle/WALL-E/blob/master/material.md
 
+##图纸
+https://github.com/miclle/WALL-E/tree/master/drawings
+
 ##Raspberry-Pi Getting Started:
 https://github.com/miclle/WALL-E/blob/master/Raspberry-Pi/guides.md
 
