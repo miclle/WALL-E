@@ -9,3 +9,6 @@ https://github.com/miclle/WALL-E/blob/master/Raspberry-Pi/ruby_on_raspberry_pi.m
 
 ##Watchdog 看门狗
 https://github.com/miclle/WALL-E/blob/master/Raspberry-Pi/watchdog.md
+
+##Audio 音频
+https://github.com/miclle/WALL-E/blob/master/Raspberry-Pi/audio.md
