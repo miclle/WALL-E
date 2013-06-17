@@ -23,14 +23,13 @@
 
 * ###Configure ALSA driver for n Analog=1 HDMI=2 (Auto=0 Not recommended)
 
-	1. 通过音频 `analog` 输出
-```
-amixer cset numid=3 1
-speaker-test -t sine -f 600
-```
-	2. 通过 `HDMI` 输出
-```
-amixer cset numid=3 2
-speaker-test -t sine -f 600
-```
-
+1. 通过音频 `analog` 输出
+	```
+	amixer cset numid=3 1
+	speaker-test -t sine -f 600
+	```
+2. 通过 `HDMI` 输出
+	```
+	amixer cset numid=3 2
+	speaker-test -t sine -f 600
+	```
