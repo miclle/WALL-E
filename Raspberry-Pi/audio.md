@@ -37,6 +37,8 @@
 
 ##Player
 * ###mpg123 - Fast console MPEG Audio Player and decoder library
+	website: http://www.mpg123.org
+       
 	```
 	sudo apt-get install mpg123
 	```	
