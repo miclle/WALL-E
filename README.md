@@ -18,4 +18,4 @@ https://github.com/miclle/WALL-E/blob/master/Raspberry-Pi/guides.md
 * Sinatra https://github.com/sinatra/sinatra
 
 ##Development environment
-rerun 'ruby app.rb'
+run 'ruby app.rb'
