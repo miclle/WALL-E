@@ -1,4 +1,5 @@
 #include "pt.h"
+#include <aJSON.h>
 
 int E1 = 6;
 int M1 = 7;
@@ -10,26 +11,43 @@ static struct pt pt_serial_read, pt_motor_right, pt_motor_left;
 
 int LED = 13;
 
-String comdata = "";
-
 static long MOTOR_BLINK =  1000;
 static long SERIAL_IO_BLINK = 100;
 
 static int INIT_SPEED = 200;
 
 // Serial read
+// Test: Serial Input {"name": "Miclle Zheng"}
+
 static int serial_read_thread( struct pt *pt, long timeout ) {
   static long t2 = 0;
   PT_BEGIN( pt );
   while(1) {
     PT_WAIT_UNTIL( pt, (millis() - t2) > timeout );
     t2 = millis();
-     while (Serial.available() > 0){
+
+    String comdata = "";
+
+    while (Serial.available() > 0){
         comdata += char(Serial.read());
-        // delay(2);
     }
+
     if (comdata.length() > 0){
+
         Serial.println(comdata);
+
+        char charBuf[comdata.length()];
+
+        comdata.toCharArray(charBuf, comdata.length());
+
+        Serial.println(charBuf);
+
+        aJsonObject* root = aJson.parse(charBuf);
+        aJsonObject* name = aJson.getObjectItem(root, "name");
+
+        Serial.print("name: ");
+        Serial.println(name->valuestring);
+
         comdata = "";
     }
   }
