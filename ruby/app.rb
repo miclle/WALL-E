@@ -18,10 +18,9 @@ end
 
 get '/system' do
   content_type :json
-
   {
     stat:    System.stat,
-    cpu_temperature:  System.cpu_temperature,
+    cpu_temperature: System.cpu_temperature,
     memory:  System.memory
   }.to_json
 end

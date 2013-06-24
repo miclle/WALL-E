@@ -28,6 +28,11 @@ $(function (){
   var getSystemInfo = function(){
 
     $.getJSON('/system', function(info){
+
+      var cpu_temperature = info['cpu_temperature'];
+
+      $('#cpu-temperature').text(cpu_temperature);
+
       var stat = info['stat'];
 
       var user = stat['user'], nice = stat['nice'], system = stat['system'], idle = stat['idle'], iowait = stat['iowait'], irq = stat['irq'], softirq = stat['softirq'];
@@ -37,13 +42,14 @@ $(function (){
       console.log(cpuUsages);
 
       var memory = info['memory'];
+
       chart.series[0].setData([
         ['buffers', $.rounding(memory['buffers']/1024, 2)],
         ['cached',  $.rounding(memory['cached']/1024, 2)],
         ['free',    $.rounding(memory['free']/1024, 2)],
         ['used',    $.rounding((memory['total'] - memory['free'] - memory['buffers'] - memory['cached'])/1024, 2)]
       ]);
-      // setTimeout(getSystemInfo, 1000 * 5);
+      setTimeout(getSystemInfo, 1000 * 5);
     });
   }
 

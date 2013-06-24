@@ -1,11 +1,12 @@
 source 'http://ruby.taobao.org/'
+# source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'sinatra-reloader'
+gem 'sinatra-contrib'
 
 # gem 'rb-fsevent', '~> 0.9'
 # gem 'rerun'
 # gem 'shotgun'
 
-# gem "ruby-serialport", "~> 0.7.0"
-# gem "arduino_firmata", "~> 0.2.8"
+gem 'serialport', '~> 1.1.0'
+gem 'arduino_firmata'#, '~> 0.3.0'

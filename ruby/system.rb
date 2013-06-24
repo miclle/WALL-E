@@ -1,3 +1,7 @@
+
+require 'sinatra/contrib'
+require 'sinatra/reloader'
+
 class System
 
   # CPU Usage
@@ -30,7 +34,8 @@ class System
 
   # CPU Temperature
   def self.cpu_temperature
-    `vcgencmd measure_temp`.gsub("temp=", "").gsub("'C\n", "").to_f
+    # `vcgencmd measure_temp`.gsub("temp=", "").gsub("'C\n", "").to_f
+    50.0
   end
 
   # Memory usage: (MEMUsedPerc) = 100 * (MemTotal - MemFree - Buffers - Cached) / MemTotal
