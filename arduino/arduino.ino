@@ -13,48 +13,70 @@ int LED = 13;
 
 static long MOTOR_BLINK =  1000;
 
-static long SERIAL_IO_BLINK = 100;
-
 static int INIT_SPEED = 200;
 
+int ML_STATUS;
+int ML_SPEED;
+
+int MR_STATUS;
+int MR_SPEED;
+
 // Serial read
-// Test: Serial Input {"name": "Miclle Zheng"}
+// Test: Serial Input {"ml_status":0, "ml_speed":200, "mr_status":0, "mr_speed":200}
 
-static int serial_read_thread( struct pt *pt, long timeout ) {
-  static long t2 = 0;
+static int serial_read_thread( struct pt *pt ) {
+
+  int availableBytes = Serial.available();
+
   PT_BEGIN( pt );
+
   while(1) {
-    PT_WAIT_UNTIL( pt, (millis() - t2) > timeout );
-    t2 = millis();
+    PT_WAIT_UNTIL( pt, availableBytes > 0 );
 
-    int availableBytes = Serial.available();
+    Serial.print("execute here, availableBytes: ");
+    Serial.println(Serial.available());
 
-    if( availableBytes > 0){
+    // char inChar;
+    // char inData[availableBytes + 1];
 
-      char charBuf[availableBytes];
+    // // Serial.readBytes(inData, availableBytes);
 
-      Serial.println(availableBytes);
+    // int index = 0;
+    // while (Serial.available() > 0){
 
-      Serial.readBytes(charBuf, availableBytes);
+    //   inChar = char(Serial.read());
 
-      // int i = 0;
-      // while (Serial.available() > 0){
-      //   // Serial.println(char(Serial.read()));
-      //   // comdata += char(Serial.read());
-      //   charBuf[i] = Serial.read();
-      //   i++;
-      // }
+    //   Serial.println(inChar);
 
-      Serial.print("charBuf: ");
-      Serial.println(charBuf);
+    //   inData[index] = inChar;
+    //   index++;
+    //   delay(2);
+    // }
 
-      aJsonObject* root = aJson.parse(charBuf);
-      aJsonObject* name = aJson.getObjectItem(root, "name");
+    // inData[index] = '\0';
 
-      Serial.print("name: ");
-      Serial.println(name->valueint);
-    }
+    // // Serial.flush();
 
+    // Serial.print("inData: ");
+    // Serial.println(inData);
+
+    availableBytes = 0;
+
+    // aJsonObject* root = aJson.parse(inData);
+    // aJsonObject* ml_status_obj = aJson.getObjectItem(root, "ml_status");
+    // aJsonObject* ml_speed_obj = aJson.getObjectItem(root, "ml_speed");
+    // aJsonObject* mr_status_obj = aJson.getObjectItem(root, "mr_status");
+    // aJsonObject* mr_speed_obj = aJson.getObjectItem(root, "mr_speed");
+
+    // ML_STATUS = ml_status_obj->valueint;
+    // ML_SPEED = ml_speed_obj->valueint;
+    // MR_STATUS = mr_status_obj->valueint;
+    // MR_SPEED = mr_speed_obj->valueint;
+
+    // Serial.println(ML_STATUS);
+    // Serial.println(ML_SPEED);
+    // Serial.println(MR_STATUS);
+    // Serial.println(MR_SPEED);
   }
   PT_END( pt );
 }
@@ -98,16 +120,34 @@ void setup() {
   pinMode(M1, OUTPUT);
   pinMode(M2, OUTPUT);
 
-  PT_INIT( &pt_motor_right );
-  PT_INIT( &pt_serial_read );
-  PT_INIT( &pt_motor_left );
+  // PT_INIT( &pt_serial_read );
+  // PT_INIT( &pt_motor_right );
+  // PT_INIT( &pt_motor_left );
 }
 
 // Loop, put your main code here, to run repeatedly
 void loop() {
-  motor_left_thread( &pt_motor_left, MOTOR_BLINK );
-  motor_right_thread( &pt_motor_right, MOTOR_BLINK );
-  serial_read_thread( &pt_serial_read, SERIAL_IO_BLINK );
+  // serial_read_thread(&pt_serial_read);
+  // motor_left_thread( &pt_motor_left, MOTOR_BLINK );
+  // motor_right_thread( &pt_motor_right, MOTOR_BLINK );
+
+  String comdata = "";
+
+  while(Serial.available() > 0){ // Don't read unless there you know there is data
+    comdata += char(Serial.read());
+    delay(5);
+  }
+
+  if (comdata.length() > 0){
+    Serial.println(comdata);
+
+    char buf[comdata.length() + 1];
+    // comdata.toCharArray(buf, comdata.length());
+    // buf[comdata.length() + 1] = '\0';
+    Serial.println(buf);
+    // comdata = "";
+  }
+  // Now do something with the string (but not using ==)
 }
 
 
