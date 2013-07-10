@@ -142,10 +142,9 @@ void loop() {
     Serial.println(comdata);
 
     char buf[comdata.length() + 1];
-    // comdata.toCharArray(buf, comdata.length());
-    // buf[comdata.length() + 1] = '\0';
+    comdata.toCharArray(buf, comdata.length() + 1);
     Serial.println(buf);
-    // comdata = "";
+    comdata = "";
   }
   // Now do something with the string (but not using ==)
 }
