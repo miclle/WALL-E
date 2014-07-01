@@ -3,6 +3,10 @@ WALL·E
 
 WALL·E Robot
 
+项目已经停止了，换了新家，树莓派的板子已经拿来装了个XBMC来看网络电视了 :)
+
+
+
 ![Mou icon](https://raw.github.com/miclle/WALL-E/master/wall-e-pixar.jpg)
 
 ##材料及工具
