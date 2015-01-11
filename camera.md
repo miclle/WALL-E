@@ -22,7 +22,7 @@ raspivid -o vid.h264
 sudo apt-get remove ffmpeg
 cd /usr/src
 sudo mkdir ffmpeg
-sudo chown `whoami`:users ffmpeg
+# sudo chown `whoami`:users ffmpeg
 git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
 cd ffmpeg
 ./configure
